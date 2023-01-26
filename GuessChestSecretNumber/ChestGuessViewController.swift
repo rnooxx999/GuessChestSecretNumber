@@ -1,18 +1,25 @@
 //
-//  ViewController.swift
-//  GuessChestSecretNumber
+//  ChestGuessViewController.swift
+//  try
 //
-//  Created by Ran Ra on 05/07/1444 AH.
+//  Created by Ran Ra on 18/03/1444 AH.
 //
 
+import Foundation
 import UIKit
 
-class ViewController: UIViewController {
+import SwiftUI
+ 
+class ChestGuessViewController: UIViewController {
     
+    @IBOutlet var customAlert: CustomAlertV!
     
-    // MARK: - var :
+//    let cell = CustomAlertV.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.identifier, for: indexPath) as! OnboardingCollectionViewCell
+    @IBOutlet weak var dialog: UIView!
+    
+    var alertCV : CustomAlertV!
 
-    //Int random from extension
+    //from extension
     var random1 = Int.randomNum
     var random2 = Int.randomNum
     var random3 = Int.randomNum
@@ -29,7 +36,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var upDownImage1: UIImageView!
 
     
-    // MARK: - First Column
+    // MARK: - First button
     
     var number1 = 0
     @IBAction func upButton1(_ sender: Any) {
@@ -66,13 +73,15 @@ class ViewController: UIViewController {
      }
     
     
-    // MARK: - Third Column
+    // MARK: - Third button
 
      var number3 = 0
      
      @IBOutlet weak var lebalNumber3: UILabel!
+     
      @IBOutlet weak var upDownImage3: UIImageView!
 
+     
      @IBAction func upButton3(_ sender: Any) {
          if isCheked3 == true {
          upButton(label: lebalNumber3, number: &number3)
@@ -96,9 +105,8 @@ class ViewController: UIViewController {
  }
  
     
-    // MARK: - Winning Losing Dialog :
+    // MARK: - Winning Dialog :
     
-    @IBOutlet weak var dialog: UIView!
     @IBOutlet weak var dialgWinOrLose: UILabel!
     @IBOutlet weak var dialogSecretNumber: UILabel!
     @IBOutlet weak var dialogTrysNumber: UILabel!
@@ -127,7 +135,7 @@ class ViewController: UIViewController {
         dialogImageOpenOrClose.image = #imageLiteral(resourceName: "chests1")
     }
     
-    // MARK: - start Appliction
+    //start Appliction
     func start(){
          random1 = Int.random(in: 1...10)
          random2 = Int.random(in: 1...10)
@@ -154,7 +162,7 @@ class ViewController: UIViewController {
     
     
     // MARK: - Functions :
-    
+
     func upButton( label : UILabel ,  number: inout Int ) -> Void {
          if number < 10  {
              number += 1
@@ -212,16 +220,29 @@ class ViewController: UIViewController {
         }
     }
     
-
+ 
+    
+    //Didload
+    
+//    func showAlertBtnClick(){
+//        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "CustomAlert") as! CustomAlertCV
+//
+//
+//        //customAlert.deled
+//
+//    }
+    
     
 }
 
 
 
-// MARK: -  Toast For Count
+//Toast For Count
 
 extension UIViewController{
+    
     func shohToast(message : String){
+        
         guard let window = UIApplication.shared.keyWindow else {
             return
         }
